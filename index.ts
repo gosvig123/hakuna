@@ -1,20 +1,20 @@
 import express from 'express';
-
-import cors from 'cors';
-
 const app = express();
+import authenticate from './middleware/authenticate';
 
-const router = express.Router();
+import userRouter from './routes/users';
 
+import router from './routes/products';
+
+app.use(express.json());
+
+app.use(userRouter);
+app.use(authenticate);
 app.use(router);
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  })
-);
+const port = 8080;
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
 });
 export default app;
