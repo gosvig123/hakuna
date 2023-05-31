@@ -1,15 +1,13 @@
 import express from 'express';
 const app = express();
-import authenticate from './middleware/authenticate';
 
-import userRouter from './routes/users';
+import authRouter from './routes/auth';
 
 import router from './routes/products';
 
 app.use(express.json());
 
-app.use(userRouter);
-app.use(authenticate);
+app.use(authRouter);
 app.use(router);
 
 const port = 8080;

@@ -1,9 +1,9 @@
 import express from 'express';
-import userService from '../services/userServices';
+import userService from '../services/authService';
 
-const userRouter = express.Router();
+const authRouter = express.Router();
 
-userRouter.post('/login', async (req, res) => {
+authRouter.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -28,4 +28,4 @@ userRouter.post('/login', async (req, res) => {
   }
 });
 
-export default userRouter;
+export default authRouter;
